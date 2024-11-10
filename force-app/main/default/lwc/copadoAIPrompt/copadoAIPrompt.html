@@ -1,0 +1,16 @@
+<template>
+    <lightning-card>
+        <div slot="title" class="custom-icon-title">
+            <img src={logoUrl} alt="Copado" class="custom-icon" />
+            <span>Copado AI Configuration Assistant</span>
+        </div>
+        <div class="slds-m-around_medium">
+            <lightning-input label="Prompt" value={prompt} onchange={handlePromptChange}>
+                ></lightning-input>
+            <br/>
+            <lightning-button variant="brand" label="Ask Copado" title="Prompt Copado" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+            <br/><br/>
+            <lightning-textarea label="Response" value={response} readonly> </lightning-textarea>
+        </div>
+    </lightning-card>
+</template>
