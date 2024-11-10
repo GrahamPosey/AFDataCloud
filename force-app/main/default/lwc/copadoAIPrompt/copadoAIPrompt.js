@@ -15,10 +15,12 @@ export default class CopadoAIPrompt extends LightningElement {
         this.response = 'Working…';
         createGeneration({ prompt: this.prompt })
 		.then(result => {
+            this.prompt = '';
 			this.response = result;
 			this.error = undefined;
 		})
 		.catch(error => {
+            this.prompt = '';
             this.response = 'Error';
 			this.error = error;
 		})
