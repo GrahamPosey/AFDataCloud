@@ -1,0 +1,46 @@
+# NOTE: readme.txt contains important information you need to take into account
+# before running this suite.
+
+*** Settings ***
+Library    QForce
+Library    QWeb
+Suite Setup        OpenBrowser    about:blank    chrome
+*** Variables ***
+${LOGIN_URL}    https://co1733199792083.my.salesforce.com/
+${USERNAME}     gposey@copado.com.dcdo
+${PASSWORD}     Copado123
+
+*** Test Cases ***
+Login to Salesforce
+    [Documentation]    This test case logs into the specified Salesforce instance and configures Agentforce
+    OpenBrowser       about:blank       chrome
+    GoTo    ${LOGIN_URL}
+    TypeText    Username    ${USERNAME}
+    TypeSecret    Password    ${PASSWORD}
+    ClickText    Log In
+    VerifyText    Home    timeout=30
+    ClickText    Setup
+    ClickText    Opens in a new tab
+    SwitchWindow    NEW
+    SwitchWindow    2
+    TypeText    Quick Find    Einstein Setup
+    ClickText    Einstein Setup
+    ClickCheckbox    Turn on EinsteinOnOff    on
+    Sleep    3s
+    RefreshPage
+    TypeText    Quick Find    Einstein Bots
+    ClickText    Einstein Bots
+    ClickCheckbox    Einstein BotsOnOff    on
+    Sleep    10s
+    CloseWindow
+    ClickText    View profile
+    ClickText    Log Out
+    TypeText    Username    epic.f8631731115082551@orgfarm.th
+    TypeSecret    Password    Copado123
+    ClickText    Log In
+    ClickText    Setup
+    ClickText    Opens in a new tab
+    SwitchWindow    NEW
+    TypeText    Quick Find    Agents
+    ClickText    Agents
+    ClickCheckbox    Basic optionOnOff    on
